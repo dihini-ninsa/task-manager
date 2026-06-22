@@ -98,12 +98,18 @@ class App(ctk.CTk):
         frame = ctk.CTkFrame(self, fg_color="transparent")
         frame.pack(fill="x", padx=20, pady=(0, 8))
 
+        ctk.CTkLabel(
+            frame, text="🔍  Search",
+            font=ctk.CTkFont(size=12),
+            text_color="gray"
+        ).pack(anchor="w", pady=(0, 3))
+
         self.search_var = ctk.StringVar()
         self.search_var.trace_add("write", lambda *a: self.refresh())
 
         ctk.CTkEntry(
             frame,
-            placeholder_text="Search tasks...",
+            placeholder_text="Type to filter tasks...",
             textvariable=self.search_var,
             height=36,
             font=ctk.CTkFont(size=13)
